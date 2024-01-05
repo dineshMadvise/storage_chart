@@ -1,0 +1,21 @@
+name: storage_chart_example
+description: A new Flutter project.
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.1.5 <4.0.0'
+
+publish_to: none
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  storage_chart:
+    path: ../
+  cupertino_icons: ^1.0.6
+
+dev_dependencies:
+flutter_lints: ^2.0.0
+flutter:
+  uses-material-design: true
