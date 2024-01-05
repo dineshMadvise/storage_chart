@@ -6,6 +6,8 @@ class StorageChatLayout extends StatelessWidget {
   final num totalStorage;
   final double? width;
   final double? height;
+  final Color? cylinderBgColor;
+  final Color? topOvalColor;
   final List<DataModel> storageData;
 
   const StorageChatLayout(
@@ -13,7 +15,10 @@ class StorageChatLayout extends StatelessWidget {
       required this.totalStorage,
       required this.storageData,
       this.width,
-      this.height})
+      this.height,
+      this.cylinderBgColor,
+      this.topOvalColor,
+      })
       : super(key: key);
 
   @override
@@ -37,6 +42,8 @@ class StorageChatLayout extends StatelessWidget {
                 painter: CylinderPainter(
                     totalStorage: totalStorage,
                     storageData: storageData,
+                    cylinderBgColor:cylinderBgColor,
+                    topOvalColor:topOvalColor,
                     cylinderHeight: height ?? size.height / 1.8,
                     cylinderWidth: width ?? size.width / 3.2,
                     screenSize: size),

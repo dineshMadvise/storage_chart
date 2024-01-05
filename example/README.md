@@ -1,4 +1,4 @@
-# bubble_chart_example
+# storage_chart_example
 
 A new Flutter project.
 

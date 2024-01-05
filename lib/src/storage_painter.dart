@@ -5,7 +5,7 @@ class CylinderPainter extends CustomPainter {
   final num totalStorage;
   final List<DataModel> storageData;
   final Size screenSize;
-  final Color? storageBgColor;
+  final Color? cylinderBgColor;
   final Color? topOvalColor;
   final double cylinderWidth;
   final double cylinderHeight;
@@ -16,7 +16,7 @@ class CylinderPainter extends CustomPainter {
     required this.screenSize,
     required this.cylinderWidth,
     required this.cylinderHeight,
-    this.storageBgColor,
+    this.cylinderBgColor,
     this.topOvalColor,
   });
 
@@ -24,7 +24,7 @@ class CylinderPainter extends CustomPainter {
   void paint(Canvas canvas, Size size) {
     final screenHeight = screenSize.height;
     print("SCREEN HEIGHT  ${screenSize.height}");
-    print("MAIN CYLINDER HEIGHT 100 % ${screenSize.height / 1.8}");
+    print("MAIN CYLINDER HEIGHT 100 % $cylinderHeight");
 
     /// STATIC HEIGHT
     // final cylinderHeight = screenSize.height / 1.8;
@@ -35,11 +35,11 @@ class CylinderPainter extends CustomPainter {
     var mainCylinderPath = Path();
     var mainCylinderPaint = Paint();
 
-    mainCylinderPaint.color = storageBgColor ?? const Color(0xffF2F2F2);
+    mainCylinderPaint.color = cylinderBgColor ?? const Color(0xffF2F2F2);
     mainCylinderPaint.style = PaintingStyle.fill;
-    mainCylinderPath.moveTo(0, screenHeight / 1.8);
+    mainCylinderPath.moveTo(0, cylinderHeight);
     mainCylinderPath.quadraticBezierTo(size.width / 2,
-        (screenHeight / 1.8) + ovalValue, size.width, screenHeight / 1.8);
+        (cylinderHeight) + ovalValue, size.width, cylinderHeight);
     mainCylinderPath.lineTo(size.width, 0);
     mainCylinderPath.lineTo(0, 0);
 
@@ -129,16 +129,15 @@ class CylinderPainter extends CustomPainter {
     for (int i = 0; i < index; i++) {
       var segmentPercentage = (storageData[i].amount * 100) / totalStorage;
 
-      segmentHeight += (segmentPercentage / 100) * screenSize.height / 1.8;
+      segmentHeight += (segmentPercentage / 100) * cylinderHeight;
     }
     return segmentHeight;
   }
 
   double getOvalHeight(int index) {
     var segmentPercentage = (storageData[index].amount * 100) / totalStorage;
-    print("segment percentage :- $segmentPercentage %");
-
-    return (segmentPercentage / 100) * screenSize.height / 1.8;
+    print("segment percentage :- $segmentPercentage % height :- ${(segmentPercentage / 100) * cylinderHeight}");
+    return (segmentPercentage / 100) * cylinderHeight;
   }
 
   @override
